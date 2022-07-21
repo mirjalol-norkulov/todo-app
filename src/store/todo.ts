@@ -8,6 +8,7 @@ export const useTodoStore = defineStore("todo", {
       { id: 2, text: "Todo 2", completed: true, dueDate: "2022-06-22" },
       { id: 3, text: "Todo 3", completed: false, dueDate: "2022-06-22" },
     ] as Types.Todo[],
+    currentEditingTodo: null as Types.Todo | undefined | null,
   }),
   getters: {
     activeCount(state) {
@@ -32,6 +33,20 @@ export const useTodoStore = defineStore("todo", {
     },
   },
   actions: {
+    addTodo(payload: Types.TodoPayload) {
+      this.todos.push({
+        id: this.todos.length + 1,
+        ...payload,
+      });
+    },
+    editTodo(id: number, payload: Types.TodoPayload) {
+      this.todos = this.todos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, ...payload };
+        }
+        return todo;
+      });
+    },
     deleteTodo(id: number) {
       this.todos = this.todos.filter((todo) => todo.id !== id);
     },

@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import CheckIcon from "@/assets/icons/check.svg";
-import { computed, defineComponent } from "vue";
+import { useField } from "vee-validate";
+import { defineComponent } from "vue";
 
 const props = defineProps({
+  name: { type: String, default: "" },
   modelValue: { type: [Boolean, Array], default: undefined },
   label: { type: String, default: undefined },
   labelPosition: {
@@ -13,16 +15,14 @@ const props = defineProps({
     },
   },
 });
-const emit = defineEmits(["update:modelValue"]);
 
-const value = computed({
-  get() {
-    return props.modelValue;
-  },
-  set(value) {
-    emit("update:modelValue", value);
-  },
-});
+const { value, errorMessage, handleBlur, handleChange, meta } = useField(
+  props.name,
+  undefined,
+  {
+    initialValue: props.modelValue,
+  }
+);
 </script>
 
 <script lang="ts">

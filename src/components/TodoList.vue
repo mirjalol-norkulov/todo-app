@@ -5,11 +5,19 @@ const todoStore = useTodoStore();
 </script>
 
 <template>
-  <div class="bg-white rounded">
+  <div
+    class="bg-white rounded h-full flex flex-col"
+    :class="{
+      'items-center justify-center': todoStore.filteredTodos.length === 0,
+    }"
+  >
     <TodoListItem
       v-for="(todo, idx) in todoStore.filteredTodos"
       :key="idx"
       :todo="todo"
     />
+    <span v-if="todoStore.filteredTodos.length === 0" class="text-gray-400">
+      No items
+    </span>
   </div>
 </template>

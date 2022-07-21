@@ -5,14 +5,15 @@ import EditIcon from "@/assets/icons/edit.svg";
 import DeleteIcon from "@/assets/icons/delete.svg";
 import { useTodoStore } from "@/store/todo";
 
-const props = defineProps({
-  todo: {
-    type: Object,
-    required: true,
-  },
-});
+const props = defineProps<{
+  todo: Types.Todo;
+}>();
 
 const todoStore = useTodoStore();
+
+const handleEdit = () => {
+  todoStore.currentEditingTodo = props.todo;
+};
 
 const handleDelete = () => {
   todoStore.deleteTodo(props.todo.id);
@@ -30,7 +31,7 @@ const handleDelete = () => {
       <span class="text-xs text-slate-400">{{ todo.dueDate }}</span>
     </section>
     <section class="flex space-x-1">
-      <BaseButton size="sm">
+      <BaseButton size="sm" @click="handleEdit">
         <EditIcon class="w-4 h-4" />
       </BaseButton>
       <BaseButton size="sm" color="danger" @click="handleDelete">

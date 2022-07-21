@@ -9,10 +9,14 @@ defineProps({
   },
   color: {
     type: String,
-    default: "primary",
+    default: "default",
     validator(val: string) {
-      return ["primary", "danger"].includes(val);
+      return ["primary", "danger", "default"].includes(val);
     },
+  },
+  text: {
+    type: Boolean,
+    default: false,
   },
 });
 </script>
@@ -24,8 +28,10 @@ defineProps({
       'px-2 py-1': size === 'sm',
       'px-4 py-2': size === 'md',
       'px-5 py-3': size === 'lg',
-      'bg-primary hover:bg-primary-dark': color === 'primary',
-      'bg-danger hover:bg-danger-dark': color === 'danger',
+      'bg-white text-black border border-gray hover:border-primary hover:text-primary':
+        color === 'default',
+      'bg-primary hover:bg-primary-dark': color === 'primary' && !text,
+      'bg-danger hover:bg-danger-dark': color === 'danger' && !text,
     }"
   >
     <slot />

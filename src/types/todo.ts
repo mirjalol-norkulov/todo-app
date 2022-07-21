@@ -1,8 +1,11 @@
 namespace Types {
-  export interface Todo {
-    id: number;
+  export interface TodoPayload {
     text: string;
     completed: boolean;
     dueDate: string;
+  }
+
+  export interface Todo extends TodoPayload {
+    id: number;
   }
 }
