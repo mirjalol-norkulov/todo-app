@@ -14,7 +14,9 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.6.7",
+    "@types/uuid": "^8.3.4",
     "pinia": "^2.0.16",
+    "uuid": "^8.3.2",
     "vee-validate": "^4.6.2",
     "vue": "^3.2.37",
     "yup": "^0.32.11"

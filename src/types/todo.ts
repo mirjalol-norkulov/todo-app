@@ -7,7 +7,7 @@ declare global {
     }
 
     export interface Todo extends TodoPayload {
-      id: number;
+      id: string;
     }
   }
 }

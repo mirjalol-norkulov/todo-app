@@ -1,12 +1,13 @@
 import { defineStore } from "pinia";
+import { v4 as uuidv4 } from "uuid";
 
 export const useTodoStore = defineStore("todo", {
   state: () => ({
     filter: "all" as Types.TodoFilter,
     todos: [
-      { id: 1, text: "Todo 1", completed: false, dueDate: "2022-06-22" },
-      { id: 2, text: "Todo 2", completed: true, dueDate: "2022-06-22" },
-      { id: 3, text: "Todo 3", completed: false, dueDate: "2022-06-22" },
+      { id: uuidv4(), text: "Todo 1", completed: false, dueDate: "2022-06-22" },
+      { id: uuidv4(), text: "Todo 2", completed: true, dueDate: "2022-06-22" },
+      { id: uuidv4(), text: "Todo 3", completed: false, dueDate: "2022-06-22" },
     ] as Types.Todo[],
     currentEditingTodo: null as Types.Todo | undefined | null,
   }),
@@ -35,11 +36,11 @@ export const useTodoStore = defineStore("todo", {
   actions: {
     addTodo(payload: Types.TodoPayload) {
       this.todos.push({
-        id: this.todos.length + 1,
+        id: uuidv4(),
         ...payload,
       });
     },
-    editTodo(id: number, payload: Types.TodoPayload) {
+    editTodo(id: string, payload: Types.TodoPayload) {
       this.todos = this.todos.map((todo) => {
         if (todo.id === id) {
           return { ...todo, ...payload };
@@ -47,7 +48,7 @@ export const useTodoStore = defineStore("todo", {
         return todo;
       });
     },
-    deleteTodo(id: number) {
+    deleteTodo(id: string) {
       this.todos = this.todos.filter((todo) => todo.id !== id);
     },
     clearCompleted() {
