@@ -21,6 +21,7 @@ test("it renders title", async () => {
   const wrapper = mount(BaseModal, {
     props: { show: true, title: "Dialog title" },
   });
+
   await flushPromises();
 
   expect(document.querySelector('[data-test="modal-title"]')?.textContent).toBe(

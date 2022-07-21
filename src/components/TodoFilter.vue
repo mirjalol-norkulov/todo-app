@@ -15,7 +15,12 @@ const filters = [
   <div class="flex items-center text-sm text-gray-500">
     <section class="flex-1">{{ todoStore.activeCount }} items left</section>
     <section class="flex space-x-2">
-      <label v-for="(filter, idx) in filters" :key="idx" class="cursor-pointer">
+      <label
+        v-for="(filter, idx) in filters"
+        :key="idx"
+        class="cursor-pointer"
+        :data-test="`todo-filter-${filter.value}`"
+      >
         <input
           v-model="todoStore.filter"
           type="radio"

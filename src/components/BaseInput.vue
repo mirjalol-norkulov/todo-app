@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { defineComponent } from "vue";
 import { useField } from "vee-validate";
 
 const props = defineProps({
@@ -21,6 +20,7 @@ const { value, errorMessage } = useField(props.name);
 </script>
 
 <script lang="ts">
+import { defineComponent } from "vue";
 export default defineComponent({
   inheritAttrs: false,
 });
