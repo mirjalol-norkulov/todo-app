@@ -21,12 +21,20 @@ const showAddModal = ref(false);
 </script>
 
 <template>
-  <div class="bg-gray-50 w-screen h-screen flex justify-center">
-    <main class="w-1/2 flex-col flex justify-center flex-col h-full space-y-4">
-      <header class="w-full flex items-center before:flex-1">
-        <h1 class="text-2xl uppercase font-black leading-3">Todo App</h1>
-        <section class="flex-1 flex justify-end">
-          <BaseButton color="primary" @click="showAddModal = true">
+  <div class="bg-gray-50 w-screen h-screen flex justify-center p-4">
+    <main
+      class="w-full sm:w-10/12 md:w-9/12 xl:w-1/2 max-w-xl flex-col flex justify-center flex-col h-full space-y-4"
+    >
+      <header class="w-full flex flex-wrap items-center before:flex-1">
+        <h1 class="text-2xl uppercase font-black leading-3" data-test="title">
+          Todo App
+        </h1>
+        <section class="flex-1 flex justify-end flex-shrink-0">
+          <BaseButton
+            color="primary"
+            data-test="todo-add-btn"
+            @click="showAddModal = true"
+          >
             Add new
           </BaseButton>
         </section>

@@ -28,10 +28,27 @@ const onSubmit = handleSubmit((values) => {
 
 <template>
   <form @submit.prevent="onSubmit" class="flex flex-col space-y-3">
-    <BaseInput name="text" full-width label="Text" />
-    <BaseInput name="dueDate" type="date" full-width label="Due date" />
-    <BaseCheckbox name="completed" label="Is completed" />
+    <BaseInput
+      name="text"
+      data-test="todo-text-input"
+      full-width
+      label="Text"
+    />
+    <BaseInput
+      name="dueDate"
+      data-test="todo-date-input"
+      type="date"
+      full-width
+      label="Due date"
+    />
+    <BaseCheckbox
+      name="completed"
+      data-test="todo-checkbox"
+      label="Is completed"
+    />
 
-    <BaseButton type="submit" color="primary"> Save </BaseButton>
+    <BaseButton type="submit" data-test="todo-save-btn" color="primary">
+      Save
+    </BaseButton>
   </form>
 </template>

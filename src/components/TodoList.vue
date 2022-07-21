@@ -10,6 +10,7 @@ const todoStore = useTodoStore();
     :class="{
       'items-center justify-center': todoStore.filteredTodos.length === 0,
     }"
+    data-test="todo-list"
   >
     <TodoListItem
       v-for="(todo, idx) in todoStore.filteredTodos"

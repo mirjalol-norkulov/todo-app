@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import CheckIcon from "@/assets/icons/check.svg";
 import { useField } from "vee-validate";
-import { defineComponent } from "vue";
+import CheckIcon from "@/assets/icons/check.svg";
 
 const props = defineProps({
   name: { type: String, default: "" },
@@ -25,12 +24,6 @@ const { value, errorMessage, handleBlur, handleChange, meta } = useField(
 );
 </script>
 
-<script lang="ts">
-export default defineComponent({
-  inheritAttrs: false,
-});
-</script>
-
 <template>
   <label
     class="inline-flex items-center"
@@ -42,12 +35,7 @@ export default defineComponent({
     <section
       class="border border-gray bg-white inline-block rounded-full w-8 h-8 flex items-center justify-center cursor-pointer"
     >
-      <input
-        type="checkbox"
-        class="peer hidden"
-        v-bind="$attrs"
-        v-model="value"
-      />
+      <input type="checkbox" class="peer hidden" v-model="value" />
       <check-icon
         class="hidden peer-checked:inline text-green-300 w-6 h-6 transform -rotate-12"
       />
